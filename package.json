@@ -1,0 +1,19 @@
+{
+  "name": "powerpresent-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Interactive AI presentation dashboard for PowerPresent",
+  "author": "Umar",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "format": "prettier --write \"**/*.{js,css,html,json}\""
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vite": "^4.4.5",
+    "prettier": "^3.0.0"
+  }
+}

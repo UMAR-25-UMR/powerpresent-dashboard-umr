@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Power Present AI</title>
+  <link rel="icon" type="png" href="logo n.png">
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <div class="logo" style="display: flex; align-items: center; gap: 10px;">
+          <img src="logo n.png" alt="PowerPresent Logo" style="height: 32px;">
+          <span>PowerPresent AI</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="credits-badge">
+          <i class="fas fa-star"></i>
+          <span>2 credits</span>
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="user-profile">
+          <img src="UMAR.jpg" alt="User" class="profile-img">
+          <span>umar</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Create Section -->
+      <section class="create-section">
+        <div class="create-header">
+          <h1>Create Your Presentation</h1>
+          <p>Enter a topic and let AI generate a professional presentation for you</p>
+        </div>
+
+        <!-- Generation Options -->
+        <div class="generation-options">
+          <div class="option-card active">
+            <div class="option-icon">
+              <i class="fas fa-magic"></i>
+            </div>
+            <h3>AI Generate</h3>
+            <p>Let AI create slides for you</p>
+          </div>
+          <div class="option-card">
+            <div class="option-icon">
+              <i class="fas fa-upload"></i>
+            </div>
+            <h3>Upload File</h3>
+            <p>Generate from PDF or Document</p>
+          </div>
+          <div class="option-card">
+            <div class="option-icon">
+              <i class="fas fa-paste"></i>
+            </div>
+            <h3>Paste Text</h3>
+            <p>Generate from text</p>
+          </div>
+          <div class="option-card">
+            <div class="option-icon">
+              <i class="fas fa-link"></i>
+            </div>
+            <h3>Custom Links</h3>
+            <p>Generate from web pages</p>
+          </div>
+        </div>
+        
+
+        <!-- Input Section -->
+        <div class="input-section">
+          <div class="input-container">
+            <div class="input-wrapper">
+              <i class="fas fa-search input-icon"></i>
+              <input 
+                type="text" 
+                placeholder="Describe your presentation topic (e.g., The future of AI)"
+                class="topic-input"
+                id="topicInput"
+                >
+              <button class="voice-btn" id="voiceBtn" title="Voice Input">
+                <i class="fas fa-microphone"></i>
+              </button>
+            </div>
+            <div class="web-search-toggle">
+              <i class="fas fa-globe"></i>
+              <span>Web search</span>
+              <div class="toggle-switch">
+                <input type="checkbox" id="webSearch">
+                <label for="webSearch"></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="generation-controls">
+  <div class="control-group">
+    <div class="custom-dropdown slides-control" data-type="slides">
+      <div class="selected">
+        <i class="fas fa-file-powerpoint"></i>
+        <span class="label">7 slides</span>
+        <i class="fas fa-chevron-down chevron"></i>
+      </div>
+      <ul class="options">
+        <li data-value="5 slides">5 slides</li>
+        <li data-value="6 slides">6 slides</li>
+        <li data-value="7 slides" class="active">7 slides</li>
+        <li data-value="8 slides">8 slides</li>
+        <li data-value="9 slides">9 slides</li>
+        <li data-value="10 slides">10 slides</li>
+        <li data-value="15 slides">15 slides</li>
+      </ul>
+    </div>
+    <div class="custom-dropdown language-control" data-type="language">
+      <div class="selected">
+        <i class="fas fa-language"></i>
+        <span class="label">English</span>
+        <i class="fas fa-chevron-down chevron"></i>
+      </div>
+      <ul class="options">
+        <li data-value="English" class="active">English</li>
+        <li data-value="Urdu">Urdu</li>
+        <li data-value="Arabic">Arabic</li>
+      </ul>
+    </div>
+  </div>
+  <button class="generate-btn" id="generateBtn">
+    <i class="fas fa-magic"></i>Generate</button>
+</div>
+
+          <div class="character-count">0 / 200</div>
+
+      <!-- Example Section  THERE IS SHUFFLE -->
+      <!-- Example Prompts Section -->
+<section id="example-section" class="example-section">
+  <div class="example-header">
+    <h2>Example Prompts</h2>
+    <button id="shuffle-btn" class="shuffle-btn">🔀 Shuffle</button>
+  </div>
+
+  <div id="examples-container" class="examples-container">
+    <!-- Cards will be inserted here by JavaScript -->
+  </div>
+</section>
+
+
+       
+      <!-- Recent Presentations -->
+      <section class="recent-section">
+        <div class="section-header">
+          <h2>Recent Presentations</h2>
+          <p>Your recently created presentations</p>
+        </div>
+
+        <div class="presentations-grid">
+          <!-- Card 1 -->
+          <div class="presentation-card" data-slides='["Intro", "Problem", "Solution", "Market", "Team", "Financials", "CTA"]'>
+            <div class="card-image">
+                <img src="AI.jpeg" class="image-overlay" alt="AI Presentation">
+                </div>
+            <div class="card-content">
+              <h3>The Future of Artificial Intelligence</h3>
+              <div class="card-meta">
+                <span class="slides-count"><i class="fas fa-file-powerpoint"></i> 8 slides</span>
+                <span class="date">Created 5/14/2024</span>
+                <button class="generate-similar-btn">Generate</button>
+              </div>
+              <div class="slide-preview">
+                <div class="preview-title">Slide Titles</div>
+                <ul class="preview-list"></ul>
+              </div>
+            </div>
+          </div>
+
+            <!-- Card 2 -->
+          <div class="presentation-card" data-slides='["Market Overview", "Growth Strategies", "Local Trends", "Case Study"]'>
+            <div class="card-image">
+                <img src="politics.jpg" class="image-overlay" alt="politics">
+              <div class="card-overlay">
+            </div>
+            </div>
+            <div class="card-content">
+              <h3>Politics in Pakistan</h3>
+              <div class="card-meta">
+                <span class="slides-count"><i class="fas fa-file-powerpoint"></i> 9 slides</span>
+                <span class="date">Created 5/5/2024</span>
+                <button class="generate-similar-btn">Generate</button>
+              </div>
+              <div class="slide-preview">
+                <div class="preview-title">Slide Titles</div>
+                <ul class="preview-list"></ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="presentation-card" data-slides='["Overview", "Causes", "Effects", "Mitigation", "Case Studies"]'>
+            <div class="card-image">
+              <div class="card-image">
+                <img src="climate.jpg" class="image-overlay" alt="climate Presentation">
+                </div>
+            </div>
+            <div class="card-content">
+              <h3>Unveiling the Impacts of Climate Change</h3>
+              <div class="card-meta">
+                <span class="slides-count"><i class="fas fa-file-powerpoint"></i> 12 slides</span>
+                <span class="date">Created 5/12/2024</span>
+                <button class="generate-similar-btn">Generate</button>
+              </div>
+              <div class="slide-preview">
+                <div class="preview-title">Slide Titles</div>
+                <ul class="preview-list"></ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="presentation-card" data-slides='["Title", "Current Trends", "Benefits", "Implementation", "Summary"]'>
+            <div class="card-image">
+                <img src="education.jpg" class="image-overlay" alt="Education Presentation">
+                <div class="card-overlay">
+                </div>
+            </div>
+            <div class="card-content">
+              <h3>The Future of AI in Education</h3>
+              <div class="card-meta">
+                <span class="slides-count"><i class="fas fa-file-powerpoint"></i> 10 slides</span>
+                <span class="date">Created 5/10/2024</span>
+                <button class="generate-similar-btn">Generate</button>
+              </div>
+              <div class="slide-preview">
+                <div class="preview-title">Slide Titles</div>
+                <ul class="preview-list"></ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="presentation-card" data-slides='["Intro", "AI vs ML", "Tech Stack", "Use Cases", "Wrap-Up"]'>
+            <div class="card-image">
+                <img src="machine.jpeg" class="image-overlay" alt="machine Presentation">
+              <div class="card-overlay">
+              </div>
+            </div>
+            <div class="card-content">
+              <h3>Demystifying AI and Machine Learning</h3>
+              <div class="card-meta">
+                <span class="slides-count"><i class="fas fa-file-powerpoint"></i> 15 slides</span>
+                <span class="date">Created 5/8/2024</span>
+                <button class="generate-similar-btn">Generate</button>
+              </div>
+              <div class="slide-preview">
+                <div class="preview-title">Slide Titles</div>
+                <ul class="preview-list"></ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="presentation-card" data-slides='["Market Overview", "Growth Strategies", "Local Trends", "Case Study"]'>
+            <div class="card-image">
+                <img src="ecommerce.jpg" class="image-overlay" alt="Ecommerce Presentation">
+              <div class="card-overlay">
+            </div>
+            </div>
+            <div class="card-content">
+              <h3>Ecommerce Business Growth in Pakistan</h3>
+              <div class="card-meta">
+                <span class="slides-count"><i class="fas fa-file-powerpoint"></i> 9 slides</span>
+                <span class="date">Created 5/5/2024</span>
+                <button class="generate-similar-btn">Generate</button>
+              </div>
+              <div class="slide-preview">
+                <div class="preview-title">Slide Titles</div>
+                <ul class="preview-list"></ul>
+              </div>
+            </div>
+          </div>
+        
+          <!-- Card 7 -->
+          <div class="presentation-card" data-slides='["Market Overview", "Growth Strategies", "Local Trends", "Case Study"]'>
+            <div class="card-image">
+                <img src="cricket.jpeg" class="image-overlay" alt="cricket Presentation">
+              <div class="card-overlay">
+            </div>
+            </div>
+            <div class="card-content">
+              <h3>History of Cricket</h3>
+              <div class="card-meta">
+                <span class="slides-count"><i class="fas fa-file-powerpoint"></i> 9 slides</span>
+                <span class="date">Created 5/5/2024</span>
+                <button class="generate-similar-btn">Generate</button>
+              </div>
+              <div class="slide-preview">
+                <div class="preview-title">Slide Titles</div>
+                <ul class="preview-list"></ul>
+              </div>
+            </div>
+          </div>
+
+            <!-- Card 8 -->
+          <div class="presentation-card" data-slides='["Market Overview", "Growth Strategies", "Local Trends", "Case Study"]'>
+            <div class="card-image">
+                <img src="polymer.jpeg" class="image-overlay" alt="polymer Presentation">
+              <div class="card-overlay">
+            </div>
+            </div>
+            <div class="card-content">
+              <h3>Polymer business in Pakistan</h3>
+              <div class="card-meta">
+                <span class="slides-count"><i class="fas fa-file-powerpoint"></i> 9 slides</span>
+                <span class="date">Created 5/5/2024</span>
+                <button class="generate-similar-btn">Generate</button>
+              </div>
+              <div class="slide-preview">
+                <div class="preview-title">Slide Titles</div>
+                <ul class="preview-list"></ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 9 -->
+          <div class="presentation-card" data-slides='["Business Model", "Source", "Market", "Pricing", "Forecast"]'>
+            <div class="card-image">
+                <img src="khazanay.jpg" class="image-overlay" alt="khazanay Presentation">
+              <div class="card-overlay">
+              </div>
+            </div>
+            <div class="card-content">
+              <h3>Used and Imported Shoe Business in Pakistan</h3>
+              <div class="card-meta">
+                <span class="slides-count"><i class="fas fa-file-powerpoint"></i> 7 slides</span>
+                <span class="date">Created 5/3/2024</span>
+                <button class="generate-similar-btn">Generate</button>
+              </div>
+              <div class="slide-preview">
+                <div class="preview-title">Slide Titles</div>
+                <ul class="preview-list"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <section class="recent-section">
+
+    <!-- Footer -->
+<footer class="footer">
+  <div class="footer-left">
+    <span>PowerPresentAI © 2025</span>
+  </div>
+  
+  <div class="footer-center">
+    <img src="logo n.png" alt="PowerPresent Logo" class="footer-logo">
+  </div>
+  
+  <div class="footer-right">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms & Services</a>
+  </div>
+</footer>
+<div style="height: 30px;"></div>
+
+
+  
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>
