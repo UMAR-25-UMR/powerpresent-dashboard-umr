@@ -2,18 +2,47 @@
   "name": "powerpresent-dashboard",
   "version": "0.1.0",
   "private": true,
-  "description": "Interactive AI presentation dashboard for PowerPresent",
+  "description": "Interactive AI presentation dashboard for PowerPresent AI",
   "author": "Umar",
   "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "format": "prettier --write \"**/*.{js,css,html,json}\""
+    "format": "prettier --write \"**/*.{js,css,html,json}\"",
+    "lint": "eslint . --ext .js,.html",
+    "check": "npm run lint"
   },
   "dependencies": {},
   "devDependencies": {
     "vite": "^4.4.5",
-    "prettier": "^3.0.0"
+    "prettier": "^3.0.0",
+    "eslint": "^8.50.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "extends": ["eslint:recommended"],
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "rules": {
+      "no-console": "off",
+      "quotes": ["error", "double"],
+      "semi": ["error", "always"]
+    }
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": false,
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "endOfLine": "auto"
   }
 }

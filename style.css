@@ -125,16 +125,22 @@ body {
 
 /* Generation Options */
 .generation-options {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 3rem;
+  display: flex;              /* instead of grid */
+  justify-content: center;    /* center them horizontally */
+  align-items: stretch;       /* make equal height */
+  gap: 1.3rem;                /* spacing between cards */
+  flex-wrap: nowrap;          /* ✅ prevents wrapping */
+  overflow-x: auto;           /* ✅ adds scroll if too many */
+  padding-bottom: 1rem;       /* space for scroll bar */
 }
+
+ 
 
 .option-card {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  flex: 0 0 250px;
   border-radius: 16px;
   padding: 2rem;
   text-align: center;
@@ -348,24 +354,6 @@ body {
   gap: 1rem;
 }
 
-.slides-control,
-.language-control {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.875rem;
-}
-
-.slides-control:hover,
-.language-control:hover {
-  background: rgba(255, 255, 255, 0.15);
-}
-
 .custom-dropdown {
   position: relative;
   cursor: pointer;
@@ -431,7 +419,6 @@ body {
   transform: rotate(180deg);
 }
 
-
 .generate-btn {
   background: linear-gradient(135deg, #8b5cf6, #a855f7);
   border: none;
@@ -449,7 +436,7 @@ body {
 
 .generate-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px c;
+  box-shadow: 0 10px 25px rgba(139,92,246,0.3);
 }
 
 .character-count {
@@ -520,7 +507,6 @@ body {
 .presentation-card:hover .card-image img {
   transform: scale(1.05);
 }
-
 
 .card-content {
   padding: 1.5rem;
@@ -604,7 +590,181 @@ body {
   border-bottom: none;
 }
 
+/* Example prompts */
+.example-section {
+  padding: 2rem;
+  background-color: #000000;
+  border-radius: 12px;
+  margin: 2rem 0;
+}
+
+.example-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.shuffle-btn {
+  background-color: #a855f7;
+  color: #000;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.shuffle-btn:hover {
+  background-color: #0056b3;
+}
+
+.examples-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.example-card {
+  background: rgb(10, 1, 34);
+  padding: 1rem;
+  border-left: 5px solid #4a90e2;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.08);
+  flex: 1;
+  min-width: 220px;
+  position: relative;
+}
+
+.example-card h3 {
+  margin-top: 0;
+}
+
+.add-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background-color: #a855f7;
+}
+
+/* Links input (custom links mode) */
+.link-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.link-input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.add-link-btn {
+  background: linear-gradient(135deg,#8b5cf6,#a855f7);
+  border: none;
+  color: rgb(247, 7, 7);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .2s ease;
+}
+
+.add-link-btn:hover {
+  transform: scale(1.05);
+}
+
+/* EXAMPLE CARD */
+
+.example-card-top { 
+  display:flex; 
+  justify-content:space-between; 
+  align-items:flex-start; 
+  gap:1rem; 
+}
+
+.example-text { 
+  flex:1; 
+}
+
+.use-prompt-btn {
+      
+  background-color: #01521b ;
+}
+
+
+
+/* Footer */
+.footer {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(12px);
+  padding: 20px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin-top: 2rem;
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 140px;
+  justify-content: center;
+}
+
+.footer-right a {
+  color: #d1d5db;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color .2s ease;
+}
+
+.footer-right a:hover {
+  color: #fff;
+}
+
+.footer-logo {
+  height: 40px;
+}
+
 /* Responsive */
+@media (max-width: 992px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-left, .footer-center, .footer-right {
+    justify-content: center;
+  }
+}
+
 @media (max-width: 768px) {
   .header {
     padding: 1rem;
@@ -667,111 +827,3 @@ body {
     padding: 1.5rem;
   }
 }
-
-.recent-section {
-  margin-bottom: 50px; 
-}
-
-
-.footer {
-  background-color: #000;
-  color: #fff;
-  padding: 20px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  text-align: center;
-    margin-bottom: 40px;
-
-}
-
-.footer-left,
-.footer-center,
-.footer-right {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.footer-right a {
-  color: #fff;
-  margin: 0 10px;
-  text-decoration: none;
-}
-
-.footer-logo {
-  height: 60px;
-
-}
-
-/* SHUFFLE CARDS */
-
-
-.example-section {
-  padding: 2rem;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 12px;
-  margin: 2rem 0;
-}
-
-.example-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.shuffle-btn {
-  background-color: #a855f7;
-  color: #000;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.shuffle-btn:hover {
-  background-color: #0056b3;
-}
-
-.examples-container {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.example-card {
-  background: rgb(6, 6, 6);
-  padding: 1rem;
-  border-left: 5px solid #4a90e2;
-  border-radius: 10px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.08);
-  flex: 1;
-  min-width: 220px;
-  position: relative;
-}
-
-.example-card h3 {
-  margin-top: 0;
-}
-
-.add-btn {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background-color: #000000;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-}
-
-.add-btn:hover {
-  background-color: #a855f7;
-}
-
-

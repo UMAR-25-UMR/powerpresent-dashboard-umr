@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Power Present AI</title>
   <link rel="icon" type="png" href="logo n.png">
 
-  <!-- Fonts & Icons -->
+
+
+  <!-- FONTS AND ICONS --> 
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- CSS -->
+  <!-- STYLE.CSS SHEET  -->
+
   <link rel="stylesheet" href="style.css">
 </head>
+
+
+        <!-- DASHBOARD STARTS --> 
+
+
+
 <body>
   <div class="dashboard">
     <!-- Header -->
@@ -37,7 +47,12 @@
       </div>
     </header>
 
-    <!-- Main Content -->
+
+
+    <!-- MAIN CONTENTS --> 
+
+
+
     <main class="main-content">
       <!-- Create Section -->
       <section class="create-section">
@@ -46,53 +61,72 @@
           <p>Enter a topic and let AI generate a professional presentation for you</p>
         </div>
 
-        <!-- Generation Options -->
+
+
+        <!-- GENERATION OPTIONS AND TEXT BOX -->
+         
+        
+
+
         <div class="generation-options">
-          <div class="option-card active">
+          <div class="option-card active" data-mode="ai">
             <div class="option-icon">
               <i class="fas fa-magic"></i>
             </div>
-            <h3>AI Generate</h3>
+            <h3>AI GENERATE</h3>
             <p>Let AI create slides for you</p>
           </div>
-          <div class="option-card">
+          <div class="option-card" data-mode="upload">
             <div class="option-icon">
               <i class="fas fa-upload"></i>
             </div>
-            <h3>Upload File</h3>
+            <h3>UPLOAD FILES</h3>
             <p>Generate from PDF or Document</p>
           </div>
-          <div class="option-card">
+          <div class="option-card" data-mode="paste">
             <div class="option-icon">
               <i class="fas fa-paste"></i>
             </div>
-            <h3>Paste Text</h3>
+            <h3>PASTE TEXT</h3>
             <p>Generate from text</p>
           </div>
-          <div class="option-card">
+          <div class="option-card" data-mode="links">
             <div class="option-icon">
               <i class="fas fa-link"></i>
             </div>
-            <h3>Custom Links</h3>
+            <h3>CUSTOM LINKS</h3>
             <p>Generate from web pages</p>
           </div>
+          <div class="option-card" data-mode="text">
+            <div class="option-icon">
+              <i class="fas fa-file-alt"></i>
+            </div>
+            
+            <h3>MULTI-SOURCE COMBO</h3>
+            <p> Upload / Paste / Links </p>
+          </div>
         </div>
-        
 
-        <!-- Input Section -->
+
+        <!-- INPUT OPTIONS --> 
+
+
         <div class="input-section">
           <div class="input-container">
-            <div class="input-wrapper">
-              <i class="fas fa-search input-icon"></i>
-              <input 
-                type="text" 
-                placeholder="Describe your presentation topic (e.g., The future of AI)"
-                class="topic-input"
-                id="topicInput"
+            <div id="dynamic-input-area">
+              <!-- default: AI Generate input -->
+              <div class="input-wrapper" data-mode="ai">
+                <i class="fas fa-search input-icon"></i>
+                <input 
+                  type="text" 
+                  placeholder="Describe your presentation topic (e.g., The future of AI)"
+                  class="topic-input"
+                  id="topicInput"
                 >
-              <button class="voice-btn" id="voiceBtn" title="Voice Input">
-                <i class="fas fa-microphone"></i>
-              </button>
+                <button class="voice-btn" id="voiceBtn" title="Voice Input">
+                  <i class="fas fa-microphone"></i>
+                </button>
+              </div>
             </div>
             <div class="web-search-toggle">
               <i class="fas fa-globe"></i>
@@ -105,65 +139,72 @@
           </div>
 
           <div class="generation-controls">
-  <div class="control-group">
-    <div class="custom-dropdown slides-control" data-type="slides">
-      <div class="selected">
-        <i class="fas fa-file-powerpoint"></i>
-        <span class="label">7 slides</span>
-        <i class="fas fa-chevron-down chevron"></i>
-      </div>
-      <ul class="options">
-        <li data-value="5 slides">5 slides</li>
-        <li data-value="6 slides">6 slides</li>
-        <li data-value="7 slides" class="active">7 slides</li>
-        <li data-value="8 slides">8 slides</li>
-        <li data-value="9 slides">9 slides</li>
-        <li data-value="10 slides">10 slides</li>
-        <li data-value="15 slides">15 slides</li>
-      </ul>
-    </div>
-    <div class="custom-dropdown language-control" data-type="language">
-      <div class="selected">
-        <i class="fas fa-language"></i>
-        <span class="label">English</span>
-        <i class="fas fa-chevron-down chevron"></i>
-      </div>
-      <ul class="options">
-        <li data-value="English" class="active">English</li>
-        <li data-value="Urdu">Urdu</li>
-        <li data-value="Arabic">Arabic</li>
-      </ul>
-    </div>
-  </div>
-  <button class="generate-btn" id="generateBtn">
-    <i class="fas fa-magic"></i>Generate</button>
-</div>
+            <div class="control-group">
+              <div class="custom-dropdown slides-control" data-type="slides">
+                <div class="selected">
+                  <i class="fas fa-file-powerpoint"></i>
+                  <span class="label">7 slides</span>
+                  <i class="fas fa-chevron-down chevron"></i>
+                </div>
+                <ul class="options">
+                  <li data-value="5 slides">5 slides</li>
+                  <li data-value="6 slides">6 slides</li>
+                  <li data-value="7 slides" class="active">7 slides</li>
+                  <li data-value="8 slides">8 slides</li>
+                  <li data-value="9 slides">9 slides</li>
+                  <li data-value="10 slides">10 slides</li>
+                  <li data-value="15 slides">15 slides</li>
+                </ul>
+              </div>
+              <div class="custom-dropdown language-control" data-type="language">
+                <div class="selected">
+                  <i class="fas fa-language"></i>
+                  <span class="label">English</span>
+                  <i class="fas fa-chevron-down chevron"></i>
+                </div>
+                <ul class="options">
+                  <li data-value="English" class="active">English</li>
+                  <li data-value="Urdu">Urdu</li>
+                  <li data-value="Arabic">Arabic</li>
+                </ul>
+              </div>
+            </div>
+            <button class="generate-btn" id="generateBtn">
+              <i class="fas fa-magic"></i> Generate
+            </button>
+          </div>
 
           <div class="character-count">0 / 200</div>
 
-      <!-- Example Section  THERE IS SHUFFLE -->
-      <!-- Example Prompts Section -->
-<section id="example-section" class="example-section">
-  <div class="example-header">
-    <h2>Example Prompts</h2>
-    <button id="shuffle-btn" class="shuffle-btn">🔀 Shuffle</button>
-  </div>
+          <!-- Example Prompts Section -->
+          <section id="example-section" class="example-section">
+            <div class="example-header">
+              <h2>Example Prompts</h2>
+              <button id="shuffle-btn" class="shuffle-btn">🔀 Shuffle</button>
+            </div>
+            <div id="examples-container" class="examples-container">
+              <!-- Cards will be inserted here by JavaScript -->
+            </div>
+          </section>
+        </div>
+      </section>
 
-  <div id="examples-container" class="examples-container">
-    <!-- Cards will be inserted here by JavaScript -->
-  </div>
-</section>
 
 
-       
-      <!-- Recent Presentations -->
+      <!-- RECENT PRESENTATIONS CARDS --> 
+
+
+
       <section class="recent-section">
         <div class="section-header">
           <h2>Recent Presentations</h2>
           <p>Your recently created presentations</p>
         </div>
 
+        
+
         <div class="presentations-grid">
+          
           <!-- Card 1 -->
           <div class="presentation-card" data-slides='["Intro", "Problem", "Solution", "Market", "Team", "Financials", "CTA"]'>
             <div class="card-image">
@@ -355,28 +396,33 @@
     </main>
   </div>
 
+  <!-- SPACING BETWEEN CARDS AND FOOTER -->
+
   <section class="recent-section">
 
-    <!-- Footer -->
-<footer class="footer">
-  <div class="footer-left">
-    <span>PowerPresentAI © 2025</span>
-  </div>
-  
-  <div class="footer-center">
-    <img src="logo n.png" alt="PowerPresent Logo" class="footer-logo">
-  </div>
-  
-  <div class="footer-right">
-    <a href="#">Privacy Policy</a>
-    <a href="#">Terms & Services</a>
-  </div>
-</footer>
-<div style="height: 30px;"></div>
+
+    <!-- FOOTER AREA -->
 
 
-  
-  <!-- JS -->
+    <footer class="footer">
+      <div class="footer-left">
+        <span>PowerPresentAI © <span id="year"></span></span>
+      </div>
+      <div class="footer-center">
+        <img src="logo n.png" alt="PowerPresent Logo" class="footer-logo">
+      </div>
+      <div class="footer-right">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Services</a>
+      </div>
+    </footer>
+    <div style="height: 30px;"></div>
+  </div>
+
+
+  <!-- SCRIPT.JS SHEET -->
+
+
   <script src="script.js"></script>
 </body>
 </html>
